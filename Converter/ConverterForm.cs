@@ -24,63 +24,62 @@ namespace Converter
         {
             string from, to;
             double converted;
-            string UAH1 = @"..\..\UAH_to_USD.txt";
-            string UAH2 = @"..\..\UAH_to_RUB.txt";
-            string USD1 = @"..\..\USD_to_UAH.txt";
-            string USD2 = @"..\..\USD_to_RUB.txt";
-            string RUB1 = @"..\..\RUB_to_USD.txt";
-            string RUB2 = @"..\..\RUB_to_UAH.txt";
             from = comboBox1.SelectedItem.ToString();
             to = comboBox2.SelectedItem.ToString();
             converted = Convert.ToDouble(richTextBox1.Text);
-            if (from == "UAH")
+            using (StreamReader sr = new StreamReader("..\\..\\kurs.csv"))
             {
-                switch (to)
+                string line;
+                string[] row = new string[6];
+                double[] UAH = new double[2];
+                double[] USD = new double[2];
+                double[] RUB = new double[2];
+                while ((line = sr.ReadLine()) != null)
                 {
-                    case "USD":
-                        FileOpen(UAH1);
-                        break;
-                    case "RUB":
-                        FileOpen(UAH2);
-                        break;
+                    row = line.Split(';');
+                    UAH[0] = double.Parse(row[0]);
+                    UAH[1] = double.Parse(row[1]);
+                    USD[0] = double.Parse(row[2]);
+                    USD[1] = double.Parse(row[3]);
+                    RUB[0] = double.Parse(row[4]);
+                    RUB[1] = double.Parse(row[5]);
                 }
-            }
-            if (from == "USD")
-            {
-                switch (to)
+                if (from == "UAH")
                 {
-                    case "UAH":
-                        FileOpen(USD1);
-                        break;
-                    case "RUB":
-                        FileOpen(USD2);
-                        break;
+                    switch (to)
+                    {
+                        case "USD":
+                            richTextBox2.Text = Convert.ToString(converted * UAH[0]);
+                            break;
+                        case "RUB":
+                            richTextBox2.Text = Convert.ToString(converted * UAH[1]);
+                            break;
+                    }
                 }
-            }
-            if (from == "RUB")
-            {
-                switch (to)
+                if (from == "USD")
                 {
-                    case "USD":
-                        FileOpen(RUB1);
-                        break;
-                    case "UAH":
-                        FileOpen(RUB2);
-                        break;
+                    switch (to)
+                    {
+                        case "UAH":
+                            richTextBox2.Text = Convert.ToString(converted * USD[0]);
+                            break;
+                        case "RUB":
+                            richTextBox2.Text = Convert.ToString(converted * USD[1]);
+                            break;
+                    }
                 }
-            }
-        }
-
-        private void FileOpen(string s)
-        {
-            using (FileStream fstream = File.OpenRead(s))
-            {
-                double converted;
-                converted = Convert.ToDouble(richTextBox1.Text);
-                byte[] kurs = new byte[fstream.Length];
-                fstream.Read(kurs, 0, kurs.Length);
-                string k = System.Text.Encoding.Default.GetString(kurs);
-                richTextBox2.Text = Convert.ToString(converted * Convert.ToDouble(k));
+                if (from == "RUB")
+                {
+                    switch (to)
+                    {
+                        case "USD":
+                            richTextBox2.Text = Convert.ToString(converted * RUB[0]);
+                            break;
+                        case "UAH":
+                            richTextBox2.Text = Convert.ToString(converted * RUB[1]);
+                            break;
+                    }
+                }
             }
         }
 
