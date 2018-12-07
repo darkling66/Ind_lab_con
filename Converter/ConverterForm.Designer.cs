@@ -75,7 +75,7 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.comboBox1.ForeColor = System.Drawing.Color.Purple;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
@@ -106,7 +106,7 @@
             // 
             // buttonConvert
             // 
-            this.buttonConvert.BackColor = System.Drawing.Color.White;
+            this.buttonConvert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.buttonConvert.ForeColor = System.Drawing.Color.Purple;
             this.buttonConvert.Location = new System.Drawing.Point(18, 348);
             this.buttonConvert.Name = "buttonConvert";
@@ -118,7 +118,7 @@
             // 
             // button0
             // 
-            this.button0.BackColor = System.Drawing.Color.White;
+            this.button0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button0.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button0.ForeColor = System.Drawing.Color.Purple;
             this.button0.Location = new System.Drawing.Point(99, 348);
@@ -131,7 +131,7 @@
             // 
             // buttonComma
             // 
-            this.buttonComma.BackColor = System.Drawing.Color.White;
+            this.buttonComma.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.buttonComma.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonComma.ForeColor = System.Drawing.Color.Purple;
             this.buttonComma.Location = new System.Drawing.Point(180, 348);
